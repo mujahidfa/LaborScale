@@ -180,7 +180,8 @@
 
 <script>
 import { industries } from '@/data/industries.ts'
-import * as laborData from '@/data/data.json'
+import { laborData } from '@/data/data.js'
+// import * as laborData from '@/data/data.json'
 
 export default {
   data() {
@@ -218,7 +219,6 @@ export default {
       return laborData.find((industry) => industry.name === this.industry)
     },
     selectedEducation() {
-      // return this.selectedIndustry.courses
       return this.selectedIndustry.courses.find(
         (education) => education.name === this.eduLevel
       )
