@@ -1,0 +1,30 @@
+{
+  "jobToStudent": [
+    "Protection of persons and property",
+    "Marketing and advertising",
+    "Languages",
+    "Transport services",
+    "Journalism and reporting"
+  ],
+  "laborDemand": [
+    "Management and administration",
+    "Marketing and advertising",
+    "Accounting and taxation",
+    "Computer science",
+    "Finance, banking and insurance"
+  ],
+  "laborSupply": [
+    "Management and administration",
+    "Computer science",
+    "Mechanics and metal work",
+    "Civil engineering",
+    "Electronics and automation"
+  ],
+  "salary": {
+    "Statistics": 6633,
+    "Physics": 6509,
+    "Economics": 6315,
+    "Computer science": 6144,
+    "Law": 6029
+  }
+}
