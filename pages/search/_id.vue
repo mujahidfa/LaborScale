@@ -178,12 +178,11 @@
   </main>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import { industries } from '@/data/industries.ts'
 import * as laborData from '@/data/data.json'
 
-export default Vue.extend({
+export default {
   data() {
     return {
       elementId: '',
@@ -209,36 +208,35 @@ export default Vue.extend({
     }
   },
   computed: {
-    eduLevel(): string {
+    eduLevel() {
       return this.url[1].split(' or ').join('/')
     },
-    industry(): string {
+    industry() {
       return this.url[0]
     },
-    selectedIndustry(): object {
-      return laborData.find((industry: any) => industry.name === this.industry)
+    selectedIndustry() {
+      return laborData.find((industry) => industry.name === this.industry)
     },
-    selectedEducation(): object {
+    selectedEducation() {
       // return this.selectedIndustry.courses
       return this.selectedIndustry.courses.find(
         (education) => education.name === this.eduLevel
       )
     },
-    studentJobRatio(): number {
-      const numOfStudents: number = this.selectedEducation[this.year]
-        .numOfStudents
-      const numOfJobs: number = this.selectedEducation[this.year].numOfJobs
+    studentJobRatio() {
+      const numOfStudents = this.selectedEducation[this.year].numOfStudents
+      const numOfJobs = this.selectedEducation[this.year].numOfJobs
       return this.getRatio(numOfStudents, numOfJobs)
     },
-    maleFemaleRatio(): number {
-      const numOfMales: number = this.selectedEducation[this.year].maleCount
-      const numOfFemales: number = this.selectedEducation[this.year].femaleCount
+    maleFemaleRatio() {
+      const numOfMales = this.selectedEducation[this.year].maleCount
+      const numOfFemales = this.selectedEducation[this.year].femaleCount
       return this.getRatio(numOfMales, numOfFemales)
     },
-    minWage(): number {
+    minWage() {
       return this.selectedEducation[this.year].aveMinSalary
     },
-    maxWage(): number {
+    maxWage() {
       return this.selectedEducation[this.year].aveMaxSalary
     },
     selectedLocation() {
@@ -253,25 +251,25 @@ export default Vue.extend({
         return b[1] - a[1]
       })
     },
-    states(): string[] {
-      return this.selectedLocation.map((elem: any) => elem[0])
+    states() {
+      return this.selectedLocation.map((elem) => elem[0])
     },
-    statesCount(): string[] {
-      return this.selectedLocation.map((elem: any) => elem[1])
+    statesCount() {
+      return this.selectedLocation.map((elem) => elem[1])
     },
-    jobstreetLink(): string {
+    jobstreetLink() {
       return this.selectedIndustry.jobstreet
     },
-    linkedinLink(): string {
+    linkedinLink() {
       return this.selectedIndustry.linkedin
     },
-    location(): string[] {
+    location() {
       return []
     },
-    locationColor(): string[] {
+    locationColor() {
       return []
     },
-    chartData(): object {
+    chartData() {
       return {
         labels: this.states,
         datasets: [
@@ -301,7 +299,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    getRatio(studentCount: number, jobCount: number): number {
+    getRatio(studentCount, jobCount) {
       if (studentCount !== 0) {
         const num = jobCount / studentCount // ratio calculation
         return +(Math.round(num * 100) / 100) // rounding off to 2 decimal places
@@ -326,7 +324,7 @@ export default Vue.extend({
     ]
     return industries.includes(industry) && education.includes(eduLevel)
   },
-})
+}
 </script>
 
 <style scoped></style>
