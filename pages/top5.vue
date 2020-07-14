@@ -7,7 +7,7 @@
     </h1>
     <p class="text-gray-800 md:text-xl">
       <RoughNotation :is-show="true" type="highlight" color="#fff176">
-        We list the Top 5's interesting findings from the labor market in
+        We list the Top 5's interesting findings from the 2018 labor market in
         Malaysia.
       </RoughNotation>
     </p>

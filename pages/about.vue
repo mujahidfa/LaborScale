@@ -62,7 +62,7 @@
       <li>
         To identify the top five student to job ration across the industry
       </li>
-      <li>o identify the top five industry with the most job opening</li>
+      <li>To identify the top five industry with the most job opening</li>
       <li>To identify the top five students output for the workforce</li>
     </ol>
   </main>
