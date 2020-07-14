@@ -1,4 +1,4 @@
-# ilmia-hackathon
+# LaborScale
 
 ## Build Setup
 
