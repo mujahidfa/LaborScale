@@ -65,7 +65,10 @@
           Student to job availability ratio in {{ year }}:
         </h2>
         <RoughNotation :is-show="true" type="box" :iterations="3" color="green">
-          <div class="p-4">
+          <div v-if="studentCount === 0 && jobCount === 0" class="p-4">
+            <p class="text-3xl">No jobs found</p>
+          </div>
+          <div v-else class="p-4">
             <p class="text-3xl">1 graduate : {{ studentJobRatio }} jobs</p>
           </div>
         </RoughNotation>
@@ -78,7 +81,15 @@
           </h2>
           <RoughNotation :is-show="true" type="box" :iterations="3" color="red">
             <div class="p-4">
-              <p class="text-3xl">1 male : {{ maleFemaleRatio }} females</p>
+              <p
+                v-if="maleRatio === 0 && maleFemaleRatio === 0"
+                class="text-3xl"
+              >
+                No students found
+              </p>
+              <p v-else class="text-3xl">
+                {{ maleRatio }} male : {{ maleFemaleRatio }} females
+              </p>
             </div>
           </RoughNotation>
         </div>
@@ -94,11 +105,24 @@
             color="orange"
           >
             <div class="p-4">
-              <p class="text-3xl">RM{{ minWage }} - RM{{ maxWage }}</p>
+              <p v-if="minWage === 0 && maxWage === 0" class="text-3xl">
+                No salaries found
+              </p>
+              <p v-else class="text-3xl">RM{{ minWage }} - RM{{ maxWage }}</p>
             </div>
           </RoughNotation>
         </div>
       </div>
+
+      <RoughNotation :is-show="none" type="highlight" color="#f7fafc">
+        <button
+          v-if="isAllDataNotAvailable"
+          class="px-12 py-3 pb-3 mt-12 text-indigo-700 transition duration-300 ease-in-out transform bg-indigo-100 rounded-lg shadow-sm sm:px-20 sm:self-center focus:outline-none hover:underline hover:scale-105"
+          @click.prevent="$router.push('/')"
+        >
+          Click here to search again!
+        </button>
+      </RoughNotation>
     </section>
 
     <section class="pt-4 pb-10 border-0 border-t-2 border-b-2">
@@ -223,10 +247,24 @@ export default {
         (education) => education.name === this.eduLevel
       )
     },
+    studentCount() {
+      return this.selectedEducation[this.year].numOfStudents
+    },
+    jobCount() {
+      return this.selectedEducation[this.year].numOfJobs
+    },
     studentJobRatio() {
-      const numOfStudents = this.selectedEducation[this.year].numOfStudents
-      const numOfJobs = this.selectedEducation[this.year].numOfJobs
-      return this.getRatio(numOfStudents, numOfJobs)
+      return this.getRatio(this.studentCount, this.jobCount)
+    },
+    maleRatio() {
+      const numOfMales = this.selectedEducation[this.year].maleCount
+      const numOfFemales = this.selectedEducation[this.year].femaleCount
+
+      if (numOfMales === 0 && numOfFemales === 0) {
+        return 0
+      } else {
+        return 1
+      }
     },
     maleFemaleRatio() {
       const numOfMales = this.selectedEducation[this.year].maleCount
@@ -262,6 +300,16 @@ export default {
     },
     linkedinLink() {
       return this.selectedIndustry.linkedin
+    },
+    isAllDataNotAvailable() {
+      return (
+        this.studentCount === 0 &&
+        this.jobCount === 0 &&
+        this.maleRatio === 0 &&
+        this.maleFemaleRatio === 0 &&
+        this.minWage === 0 &&
+        this.maxWage === 0
+      )
     },
     location() {
       return []
@@ -304,7 +352,7 @@ export default {
         const num = jobCount / studentCount // ratio calculation
         return +(Math.round(num * 100) / 100) // rounding off to 2 decimal places
       } else {
-        return 0
+        return jobCount
       }
     },
   },
