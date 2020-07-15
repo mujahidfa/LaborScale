@@ -12,15 +12,32 @@
       </RoughNotation>
     </h2>
     <p class="pb-8 text-gray-700 md:text-md">
-      This project is conducted for Labour Market Information (LMI) open data
-      challenge by Groupaq Weebs group. Groupaq Weebs groups members are Ikmal
-      Syafiq Bin Mahadi, Khairina Binti Ibrahim and Mujahid bin Fakhrul Anuar.
-      Labour Scale app is a web-based application that aims to be a one stop
-      center that provides information on the job market based on the user’s
-      qualification from the universities in Malaysia. This application is
-      targeted to help students who just finished their high school choosing
-      courses to pursue in tertiary education by informing them about the
-      prospective job market for their respective degree.
+      This project is conducted for the
+      <a
+        href="https://www.ilmia.gov.my/lmiopendatachallenge/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-700 underline hover:text-green-700"
+      >
+        Labour Market Information (LMI) Open Data Challenge</a
+      >
+      by <span class="font-semibold">Groupaq Weebs</span>. Groupaq Weebs team
+      members are Ikmal Syafiq Bin Mahadi, Khairina Binti Ibrahim and Mujahid
+      bin Fakhrul Anuar.
+      <a
+        href="https://twitter.com/LaborScale"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-700 underline hover:text-green-700"
+      >
+        LaborScale</a
+      >
+      is a web-based application that aims to be a one stop center that provides
+      information on the job market based on the user’s qualification from
+      universities in Malaysia. This application is targeted to help students
+      who just finished their education to choose courses to pursue in tertiary
+      education by informing them about the prospective job market for their
+      respective education level.
     </p>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
@@ -29,9 +46,34 @@
       </RoughNotation>
     </h2>
     <p class="pb-8 text-gray-700 md:text-md">
-      This application is build based on the data provided by ILMIA for the LMI
-      open data challenge specifically on the job vacancy and student university
-      output. This application is built using Python, Vue and NuxtJs.
+      This application is build based on the data provided by ILMIA for the
+      <a
+        href="https://www.ilmia.gov.my/lmiopendatachallenge/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-700 underline hover:text-green-700"
+      >
+        Labour Market Information (LMI) Open Data Challenge</a
+      >
+      specifically on the job vacancy and student university output. This
+      application is built using Python,
+      <a
+        href="https://vuejs.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-700 underline hover:text-green-700"
+      >
+        Vue</a
+      >
+      and
+      <a
+        href="https://nuxtjs.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-700 underline hover:text-green-700"
+      >
+        NuxtJs</a
+      >.
     </p>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
