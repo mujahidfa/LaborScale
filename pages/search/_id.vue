@@ -278,7 +278,7 @@ export default {
       return this.selectedEducation[this.year].aveMaxSalary
     },
     selectedLocation() {
-      const location = this.selectedIndustry.states[this.year]
+      const location = this.selectedEducation[this.year].states // this.selectedIndustry.states[this.year]
 
       const sortable = []
       for (const elem in location) {
