@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "https://somenetlifysite.netlify.app"
-  to = "https://mycustomdomain.com"
+  from = "https://laborscale.netlify.app"
+  to = "https://www.laborscale.com"
   status = 301
   force = true
