@@ -61,7 +61,7 @@
         v-model="selectedIndustry"
         :options="industries"
         :disabled="isEduLevelSelected === false"
-        placeholder="Select an occupation."
+        placeholder="Select an industry."
         class="text-gray-600"
       >
         <div slot="no-options">
