@@ -7,7 +7,7 @@
     </h1>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
-      <RoughNotation is-show="true" type="underline" color="blue">
+      <RoughNotation :is-show="true" type="underline" color="blue">
         Introduction
       </RoughNotation>
     </h2>
@@ -41,7 +41,7 @@
     </p>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
-      <RoughNotation is-show="true" type="underline" color="green">
+      <RoughNotation :is-show="true" type="underline" color="green">
         Background
       </RoughNotation>
     </h2>
@@ -77,7 +77,7 @@
     </p>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
-      <RoughNotation is-show="true" type="underline" color="purple">
+      <RoughNotation :is-show="true" type="underline" color="purple">
         Problem Statement
       </RoughNotation>
     </h2>
@@ -87,7 +87,7 @@
     </p>
 
     <h2 class="pb-4 text-xl font-semibold text-gray-800 md:text-2xl">
-      <RoughNotation is-show="true" type="underline" color="red">
+      <RoughNotation :is-show="true" type="underline" color="red">
         Objectives
       </RoughNotation>
     </h2>

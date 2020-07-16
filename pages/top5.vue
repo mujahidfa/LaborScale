@@ -2,6 +2,10 @@
   <main
     class="flex flex-col max-w-screen-lg min-h-screen px-8 text-center lg:mx-auto"
   >
+    <Disclaimer
+      v-show="isModalVisible === true"
+      @close="isModalVisible = false"
+    />
     <h1 class="pt-10 pb-3 text-3xl font-extrabold lg:text-5xl">
       The Top 5's
     </h1>
@@ -11,7 +15,16 @@
         Malaysia.
       </RoughNotation>
     </p>
-    <p class="text-xs text-gray-600">
+    <p class="text-red-800">
+      *Please read the disclaimer before proceeding!
+      <button
+        class="underline hover:text-blue-700"
+        @click="isModalVisible = true"
+      >
+        Click here
+      </button>
+    </p>
+    <!-- <p class="text-xs text-gray-600">
       *based on 2017-2018 data obtained from the
       <a
         href="https://www.ilmia.gov.my/"
@@ -21,7 +34,7 @@
       >
         Institute of Labour Market Information and Analysis (ILMIA)
       </a>
-    </p>
+    </p> -->
 
     <section class="py-12 space-y-12 md:px-32">
       <top-5-card :industry="jobToStudent">
@@ -80,6 +93,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
+      isModalVisible: true,
       jobToStudent: [
         'Protection of persons and property',
         'Marketing and advertising',
@@ -108,6 +122,23 @@ export default Vue.extend({
         'Computer science': 6144,
         Law: 6029,
       },
+    }
+  },
+  watch: {
+    isModalVisible(newName) {
+      localStorage.isModalVisible = newName
+    },
+  },
+  mounted() {
+    if (localStorage.isModalVisible) {
+      // localStorage.isModalVisible = true
+      this.isModalVisible = localStorage.isModalVisible
+      // eslint-disable-next-line no-console
+      console.log(
+        'in mounted localstorage homepage: ' + localStorage.isModalVisible
+      )
+      // eslint-disable-next-line no-console
+      console.log('value of isModalVisible: ' + this.isModalVisible)
     }
   },
 })

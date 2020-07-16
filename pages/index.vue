@@ -2,6 +2,11 @@
   <main
     class="flex flex-col max-w-screen-lg min-h-screen px-8 text-center lg:mx-auto"
   >
+    <Disclaimer
+      v-show="isModalVisible === true"
+      @close="isModalVisible = false"
+    />
+
     <h1 class="pt-10 pb-3 text-3xl font-extrabold lg:text-5xl">
       Find out if your college degree has
       <br aria-hidden="true" />
@@ -11,7 +16,17 @@
       <br aria-hidden="true" />
       waiting for you!
     </h1>
-    <p class="pb-10 text-sm text-gray-600">
+    <p class="pb-10 text-red-800">
+      *Please read the disclaimer before proceeding!
+      <button
+        class="underline hover:text-blue-700"
+        @click="isModalVisible = true"
+      >
+        Click here
+      </button>
+    </p>
+
+    <!-- <p class="pb-10 text-sm text-gray-600">
       *based on 2017-2018 data obtained from the
       <a
         href="https://www.ilmia.gov.my/"
@@ -21,7 +36,7 @@
       >
         Institute of Labour Market Information and Analysis (ILMIA)
       </a>
-    </p>
+    </p> -->
     <section class="pb-20 md:px-32">
       <div class="flex flex-row items-center justify-center pb-4">
         <RoughNotation :is-show="true" type="highlight" color="#FFFEE2">
@@ -108,12 +123,47 @@ export default Vue.extend({
       ],
       selectedEduLevel: '' as string,
       selectedIndustry: '' as string,
+      isModalVisible: true,
     }
   },
   computed: {
     isEduLevelSelected(): Boolean {
       return this.selectedEduLevel !== '' && this.selectedEduLevel !== null
     },
+    // isModalVisiblee(): Boolean {
+    //   return this.isModalVisible
+    // },
+    // isModalVisiblee(): Boolean {
+    // if (localStorage.isModalVisible) {
+    //   // eslint-disable-next-line no-console
+    //   console.log(
+    //     'in computed localstorage homepage: ' + localStorage.isModalVisible
+    //   )
+    //   return localStorage.isModalVisible
+    //   // eslint-disable-next-line no-console
+    //   // console.log('value of isModalVisible:' + this.isModalVisible)
+    // } else return false // this.isModalVisible
+    // },
+    // isModalVisiblee: {
+    //   // getter
+    //   get(): Boolean {
+    //     if (localStorage.isModalVisible) {
+    //       // eslint-disable-next-line no-console
+    //       console.log(
+    //         'in computed localstorage homepage: ' + localStorage.isModalVisible
+    //       )
+    //       // this.isModalVisible = localStorage.isModalVisible
+    //       return localStorage.isModalVisible
+
+    //       // eslint-disable-next-line no-console
+    //       // console.log('value of isModalVisible:' + this.isModalVisible)
+    //     } else return this.isModalVisible
+    //   },
+    //   // setter
+    //   set(newValue) {
+    //     // this.isModalVisiblee = newValue
+    //   },
+    // },
     industries(): string[] {
       return eduLevelToIndustry[this.selectedEduLevel]
     },
@@ -145,10 +195,25 @@ export default Vue.extend({
     },
   },
   watch: {
+    isModalVisible(newName) {
+      localStorage.isModalVisible = newName
+    },
     selectedEduLevel() {
       // clear previously selected job whenever a new course is selected
       this.selectedIndustry = ''
     },
+  },
+  mounted() {
+    if (localStorage.isModalVisible) {
+      // localStorage.isModalVisible = true
+      this.isModalVisible = localStorage.isModalVisible
+      // eslint-disable-next-line no-console
+      console.log(
+        'in mounted localstorage homepage: ' + localStorage.isModalVisible
+      )
+      // eslint-disable-next-line no-console
+      console.log('value of isModalVisible: ' + this.isModalVisible)
+    }
   },
 })
 </script>

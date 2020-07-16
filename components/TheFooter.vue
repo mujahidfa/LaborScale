@@ -51,6 +51,7 @@
       </a>
     </div>
     <div class="flex">
+      <p class="pr-1"><nuxt-link to="/disclaimer">Disclaimer</nuxt-link> |</p>
       <p class="pr-2">
         Follow us on
       </p>
