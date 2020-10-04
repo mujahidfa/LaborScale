@@ -1,0 +1,170 @@
+{
+  "ISTJ": [
+    "Accounting and taxation",
+    "Biology and biochemistry",
+    "Business and administration",
+    "Earth science",
+    "Finance, banking, insurance",
+    "Mining and extraction",
+    "Occupational health and safety",
+    "Veterinary"
+  ],
+  "ESTJ": [
+    "Accounting and taxation",
+    "Computer science",
+    "Finance, banking, insurance",
+    "Law",
+    "Occupational health and safety",
+    "Pharmacy",
+    "Political science and civics",
+    "Veterinary"
+  ],
+  "INTJ": [
+    "Applied science",
+    "Biology and biochemistry",
+    "Building",
+    "Computer science",
+    "Environmental science",
+    "Finance, banking, insurance",
+    "Horticulture",
+    "Law",
+    "Psychology",
+    "Science, mathematics and computing",
+    "Social and behavioural science",
+    "Sociology and cultural studies"
+  ],
+  "ISTP": [
+    "Applied science",
+    "Biology and biochemistry",
+    "Earth science",
+    "Economics",
+    "Finance, banking, insurance",
+    "Law",
+    "Marketing and advertising",
+    "Mining and extraction",
+    "Occupational health and safety",
+    "Science, mathematics and computing",
+    "Textiles, clothes, footwear, leather"
+  ],
+  "INTP": [
+    "Applied science",
+    "Chemical and process",
+    "Computer science",
+    "Economics",
+    "Finance, banking, insurance",
+    "History and archaeology",
+    "Law",
+    "Physics",
+    "Science, mathematics and computing"
+  ],
+  "INFJ": [
+    "Arts",
+    "Journalism and reporting",
+    "Music and performing arts",
+    "Nursing and caring",
+    "Psychology",
+    "Social work and counseling",
+    "Therapy and rehabilitation"
+  ],
+  "ISFP": [
+    "Arts",
+    "Dental studies",
+    "Languages",
+    "Law",
+    "Occupational health and safety",
+    "Pharmacy",
+    "Training for preschool teachers",
+    "Travel, tourism and leisure"
+  ],
+  "ESTP": [
+    "Arts",
+    "Biology and biochemistry",
+    "Chemical and process",
+    "Environmental science",
+    "Occupational health and safety",
+    "Sports",
+    "Textiles, clothes, footwear, leather"
+  ],
+  "ENFP": [
+    "Arts",
+    "Chemical and process",
+    "Journalism and reporting",
+    "Languages",
+    "Marketing and advertising",
+    "Music and performing arts",
+    "Social and behavioural science",
+    "Social work and counseling",
+    "Sociology and cultural studies",
+    "Therapy and rehabilitation"
+  ],
+  "ENTP": [
+    "Arts",
+    "Audio-visual techniques and media production",
+    "Electricity and energy",
+    "Electronics and automation",
+    "Finance, banking, insurance",
+    "History and archaeology",
+    "Journalism and reporting",
+    "Manufacturing and processing",
+    "Marketing and advertising",
+    "Material engineering",
+    "Mechanics and metal work"
+  ],
+  "ENFJ": [
+    "Arts",
+    "Journalism and reporting",
+    "Languages",
+    "Marketing and advertising",
+    "Music and performing arts",
+    "Psychology",
+    "Social work and counseling",
+    "Therapy and rehabilitation"
+  ],
+  "ESFP": [
+    "Earth science",
+    "Food processing",
+    "Health",
+    "Marketing and advertising",
+    "Mining and extraction",
+    "Nursing and caring",
+    "Psychology",
+    "Social work and counseling"
+  ],
+  "ENTJ": [
+    "Business and administration",
+    "Economics",
+    "Law",
+    "Material engineering",
+    "Physics",
+    "Political science and civics",
+    "Social and behavioural science",
+    "Sociology and cultural studies",
+    "Statistics"
+  ],
+  "ISFJ": [
+    "Finance, banking, insurance",
+    "History and archaeology",
+    "Nursing and caring",
+    "Pharmacy",
+    "Psychology",
+    "Secretarial and office work",
+    "Social work and counseling",
+    "Training for preschool teachers"
+  ],
+  "INFP": [
+    "History and archaeology",
+    "Journalism and reporting",
+    "Languages",
+    "Psychology",
+    "Social work and counseling",
+    "Therapy and rehabilitation"
+  ],
+  "ESFJ": [
+    "History and archaeology",
+    "Marketing and advertising",
+    "Nursing and caring",
+    "Psychology",
+    "Psychology",
+    "Social work and counseling"
+  ]
+}

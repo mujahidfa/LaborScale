@@ -2,10 +2,10 @@
   <main
     class="flex flex-col max-w-screen-lg min-h-screen px-8 text-center lg:mx-auto"
   >
-    <Disclaimer
+    <!-- <Disclaimer
       v-show="isModalVisible === true"
       @close="isModalVisible = false"
-    />
+    /> -->
 
     <h1 class="pt-10 pb-3 text-3xl font-extrabold lg:text-5xl">
       Find out if your college degree has
@@ -16,7 +16,7 @@
       <br aria-hidden="true" />
       waiting for you!
     </h1>
-    <p class="pb-10 text-red-800">
+    <!-- <p class="pb-10 text-red-800">
       *Please read the disclaimer before proceeding!
       <button
         class="underline hover:text-blue-700"
@@ -24,19 +24,20 @@
       >
         Click here
       </button>
-    </p>
+    </p> -->
 
-    <!-- <p class="pb-10 text-sm text-gray-600">
-      *based on 2017-2018 data obtained from the
+    <p class="pb-10 text-sm text-gray-600">
+      *based on 2020 data scraped from JobStreet from January to June 2020 &
       <a
-        href="https://www.ilmia.gov.my/"
+        href="http://www.data.gov.my/"
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-600 underline hover:text-blue-600"
       >
-        Institute of Labour Market Information and Analysis (ILMIA)
-      </a>
-    </p> -->
+        MAMPU's Public Sector Open Data Portal</a
+      >
+      data on student enrollment in Malaysia's public universities in 2018.
+    </p>
     <section class="pb-20 md:px-32">
       <div class="flex flex-row items-center justify-center pb-4">
         <RoughNotation :is-show="true" type="highlight" color="#FFFEE2">
@@ -68,6 +69,41 @@
         </RoughNotation>
 
         <label for="job" class="pl-2 text-2xl text-center">
+          My personality type is...<br />
+          <p class="text-sm text-gray-600">
+            *based on the
+            <a
+              href="https://www.16personalities.com/free-personality-test"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-indigo-700 underline hover:text-green-700"
+            >
+              Myers-Briggs Type Indicator</a
+            >
+          </p>
+        </label>
+      </div>
+      <v-select
+        id="job"
+        v-model="selectedPersonalityType"
+        :options="personalityTypes"
+        :disabled="isEduLevelSelected === false"
+        placeholder="Select a personality type."
+        class="text-gray-600"
+      >
+        <div slot="no-options">
+          No matching personality type found.
+        </div>
+      </v-select>
+    </section>
+
+    <section class="pb-20 md:px-32">
+      <div class="flex flex-row items-center justify-center pb-4">
+        <RoughNotation :is-show="true" type="highlight" color="#FFFEE2">
+          <p class="font-bold">Step 3:</p>
+        </RoughNotation>
+
+        <label for="job" class="pl-2 text-2xl text-center">
           I want to work in...
         </label>
       </div>
@@ -75,7 +111,9 @@
         id="job"
         v-model="selectedIndustry"
         :options="industries"
-        :disabled="isEduLevelSelected === false"
+        :disabled="
+          isEduLevelSelected === false && isPersonalityTypeSelected === false
+        "
         placeholder="Select an industry."
         class="text-gray-600"
       >
@@ -107,21 +145,41 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'vue-select/dist/vue-select.css'
-import { eduLevelToIndustry } from '@/data/eduLevelToIndustry.ts'
+// import { eduLevelToIndustry } from '@/data/eduLevelToIndustry.ts'
+import { personalityToIndustry } from '@/data/personalityToIndustry.ts'
 
 export default Vue.extend({
   data() {
     return {
       eduLevels: [
         'No Tertiary Education',
-        'Certificate',
+        'Professional Certificate',
         'Pre-University',
-        'Diploma/Advanced Diploma',
-        'Bachelor/Postgraduate Diploma/Professional',
+        'Diploma/Advanced/Higher/Graduate Diploma',
+        'Bachelor/Postgraduate Diploma/Professional Degree',
         'Master',
         'PhD/Doctorate',
       ],
+      personalityTypes: [
+        'ISTJ',
+        'ESTJ',
+        'INTJ',
+        'ISTP',
+        'INTP',
+        'INFJ',
+        'ISFP',
+        'ESTP',
+        'ENFP',
+        'ENTP',
+        'ENFJ',
+        'ESFP',
+        'ENTJ',
+        'ISFJ',
+        'INFP',
+        'ESFJ',
+      ],
       selectedEduLevel: '' as string,
+      selectedPersonalityType: '' as string,
       selectedIndustry: '' as string,
       isModalVisible: true,
     }
@@ -130,42 +188,14 @@ export default Vue.extend({
     isEduLevelSelected(): Boolean {
       return this.selectedEduLevel !== '' && this.selectedEduLevel !== null
     },
-    // isModalVisiblee(): Boolean {
-    //   return this.isModalVisible
-    // },
-    // isModalVisiblee(): Boolean {
-    // if (localStorage.isModalVisible) {
-    //   // eslint-disable-next-line no-console
-    //   console.log(
-    //     'in computed localstorage homepage: ' + localStorage.isModalVisible
-    //   )
-    //   return localStorage.isModalVisible
-    //   // eslint-disable-next-line no-console
-    //   // console.log('value of isModalVisible:' + this.isModalVisible)
-    // } else return false // this.isModalVisible
-    // },
-    // isModalVisiblee: {
-    //   // getter
-    //   get(): Boolean {
-    //     if (localStorage.isModalVisible) {
-    //       // eslint-disable-next-line no-console
-    //       console.log(
-    //         'in computed localstorage homepage: ' + localStorage.isModalVisible
-    //       )
-    //       // this.isModalVisible = localStorage.isModalVisible
-    //       return localStorage.isModalVisible
-
-    //       // eslint-disable-next-line no-console
-    //       // console.log('value of isModalVisible:' + this.isModalVisible)
-    //     } else return this.isModalVisible
-    //   },
-    //   // setter
-    //   set(newValue) {
-    //     // this.isModalVisiblee = newValue
-    //   },
-    // },
+    isPersonalityTypeSelected(): Boolean {
+      return (
+        this.selectedPersonalityType !== '' &&
+        this.selectedPersonalityType !== null
+      )
+    },
     industries(): string[] {
-      return eduLevelToIndustry[this.selectedEduLevel]
+      return personalityToIndustry[this.selectedPersonalityType]
     },
     isOptionsFilledIn(): Boolean {
       return (
@@ -195,26 +225,26 @@ export default Vue.extend({
     },
   },
   watch: {
-    isModalVisible(newName) {
-      localStorage.isModalVisible = newName
-    },
+    // isModalVisible(newName) {
+    //   localStorage.isModalVisible = newName
+    // },
     selectedEduLevel() {
       // clear previously selected job whenever a new course is selected
       this.selectedIndustry = ''
     },
   },
-  mounted() {
-    if (localStorage.isModalVisible) {
-      // localStorage.isModalVisible = true
-      this.isModalVisible = localStorage.isModalVisible
-      // eslint-disable-next-line no-console
-      console.log(
-        'in mounted localstorage homepage: ' + localStorage.isModalVisible
-      )
-      // eslint-disable-next-line no-console
-      console.log('value of isModalVisible: ' + this.isModalVisible)
-    }
-  },
+  // mounted() {
+  //   if (localStorage.isModalVisible) {
+  //     // localStorage.isModalVisible = true
+  //     this.isModalVisible = localStorage.isModalVisible
+  //     // eslint-disable-next-line no-console
+  //     console.log(
+  //       'in mounted localstorage homepage: ' + localStorage.isModalVisible
+  //     )
+  //     // eslint-disable-next-line no-console
+  //     console.log('value of isModalVisible: ' + this.isModalVisible)
+  //   }
+  // },
 })
 </script>
 
