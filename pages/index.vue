@@ -41,7 +41,7 @@
     <div class="mb-4">
       <button
         type="button"
-        class="inline-block px-3 py-2 text-sm leading-none text-gray-500 transition duration-300 ease-in-out transform rounded-lg hover:bg-indigo-100 hover:text-indigo-600 focus:outline-none hover:scale-105"
+        class="inline-block px-3 py-2 text-sm leading-none text-gray-700 transition duration-300 ease-in-out transform border border-gray-700 rounded-lg hover:bg-indigo-100 hover:text-indigo-600 hover:border-indigo-100 focus:outline-none hover:scale-105"
         @click="isPersonalityTypeIncluded = !isPersonalityTypeIncluded"
       >
         {{
