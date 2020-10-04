@@ -29,8 +29,8 @@
       </h1>
     </section>
 
-    <section class="pt-4 pb-8 mb-8">
-      <button
+    <section class="pt-4 pb-2 mb-2">
+      <!-- <button
         type="button"
         :class="{
           'bg-indigo-100 text-indigo-700': year === '2018',
@@ -53,31 +53,39 @@
         @click="year = '2017'"
       >
         2017
-      </button>
+      </button> -->
       <h2
         class="pt-4 pb-3 text-2xl font-semibold text-left text-gray-900 md:text-center"
       >
         General info:
       </h2>
 
-      <div class="md:max-w-md md:mx-auto">
-        <h2 class="pb-3 text-left text-gray-700 md:text-center">
-          Student to job availability ratio in {{ year }}:
-        </h2>
-        <RoughNotation :is-show="true" type="box" :iterations="3" color="green">
-          <div v-if="studentCount === 0 && jobCount === 0" class="p-4">
-            <p class="text-3xl">No jobs found</p>
-          </div>
-          <div v-else class="p-4">
-            <p class="text-3xl">1 graduate : {{ studentJobRatio }} jobs</p>
-          </div>
-        </RoughNotation>
-      </div>
+      <div class="md:grid md:grid-cols-2">
+        <!-- md:max-w-md md:mx-auto  -->
+        <div class="md:col-span-1">
+          <h2 class="pb-3 text-left text-gray-700 md:text-center">
+            Expected students from {{ year }} to current job availability in
+            2020:
+          </h2>
+          <RoughNotation
+            :is-show="true"
+            type="box"
+            :iterations="3"
+            color="green"
+          >
+            <div v-if="studentCount === 0 && jobCount === 0" class="p-4">
+              <p class="text-3xl">No jobs found</p>
+            </div>
+            <div v-else class="p-4">
+              <p class="text-3xl">1 graduate : {{ studentJobRatio }} jobs</p>
+            </div>
+          </RoughNotation>
+        </div>
 
-      <div class="md:flex md:justify-around">
-        <div>
+        <!-- <div class="md:flex md:justify-around"> -->
+        <div class="md:col-span-1">
           <h2 class="pt-8 pb-3 text-left text-gray-700 md:text-center">
-            Male to female ratio in {{ year }}:
+            Male to female students ratio in {{ year }}:
           </h2>
           <RoughNotation :is-show="true" type="box" :iterations="3" color="red">
             <div class="p-4">
@@ -94,9 +102,9 @@
           </RoughNotation>
         </div>
 
-        <div>
+        <div class="md:col-span-2">
           <h2 class="pt-8 pb-3 text-left text-gray-700 md:text-center">
-            Average wage in {{ year }}:
+            Average wage in current job market in 2020:
           </h2>
           <RoughNotation
             :is-show="true"
@@ -104,15 +112,28 @@
             :iterations="3"
             color="orange"
           >
-            <div class="p-4">
-              <p v-if="minWage === 0 && maxWage === 0" class="text-3xl">
+            <div v-for="level in salaryByLevel" :key="level.name" class="p-4">
+              <p class="text-gray-700">
+                {{ level.name }}
+              </p>
+              <p
+                v-if="level.min_salary === 0 && level.max_salary === 0"
+                class="text-xl text-gray-600"
+              >
                 No salaries found
               </p>
-              <p v-else class="text-3xl">RM{{ minWage }} - RM{{ maxWage }}</p>
+              <p v-else class="text-2xl">
+                RM{{ level.min_salary }} - RM{{ level.max_salary }}
+              </p>
             </div>
           </RoughNotation>
         </div>
+        <!-- </div> -->
       </div>
+      <h2 class="pt-8 text-sm text-left text-gray-700 md:text-center">
+        *The current job market is represented by data scraped from JobStreet
+        from January to July 2020.
+      </h2>
 
       <RoughNotation :is-show="none" type="highlight" color="#f7fafc">
         <button
@@ -125,8 +146,137 @@
       </RoughNotation>
     </section>
 
+    <section class="pt-4 pb-10 border-0 border-t-2">
+      <h2
+        class="pt-4 text-2xl font-semibold text-left text-gray-900 md:text-center"
+      >
+        Job data:
+      </h2>
+      <div class="">
+        <h2 class="pb-3 text-left text-gray-700 md:text-center">
+          Job titles:
+        </h2>
+        <RoughNotation :is-show="true" type="box" :iterations="3" color="green">
+          <div v-if="jobTitles === 0" class="p-4">
+            <p class="text-3xl">No job titles found</p>
+          </div>
+          <div v-else class="flex flex-wrap p-4">
+            <p
+              v-for="(title, index) in jobTitles"
+              :key="index"
+              class="px-3 mb-2 mr-2 text-gray-800"
+            >
+              <RoughNotation
+                :is-show="true"
+                type="highlight"
+                :color="getRandomColor()"
+              >
+                {{ title }}
+              </RoughNotation>
+            </p>
+          </div>
+        </RoughNotation>
+      </div>
+      <div class="mt-4">
+        <h2 class="pb-3 text-left text-gray-700 md:text-center">
+          Skills needed:
+        </h2>
+        <RoughNotation
+          :is-show="true"
+          type="box"
+          :iterations="3"
+          color="orange"
+        >
+          <div v-if="skills.length === 0" class="p-4">
+            <p class="text-3xl">No skills found</p>
+          </div>
+          <div v-else class="p-4">
+            <p class="mb-2 font-semibold">Soft skills:</p>
+            <div v-if="softSkills.length <= 15" class="flex flex-wrap mb-4">
+              <p
+                v-for="(skill, index) in softSkills"
+                :key="index"
+                class="px-3 mb-2 mr-2 text-gray-800"
+              >
+                <RoughNotation
+                  :is-show="true"
+                  type="highlight"
+                  :color="getRandomColor()"
+                >
+                  {{ skill.name }}
+                </RoughNotation>
+              </p>
+            </div>
+            <div v-else>
+              <div class="flex flex-wrap mb-4">
+                <p
+                  v-for="(skill, index) in shortenedSoftSkills"
+                  :key="index"
+                  class="px-3 mb-2 mr-2 text-gray-800"
+                >
+                  <RoughNotation
+                    :is-show="true"
+                    type="highlight"
+                    :color="getRandomColor()"
+                  >
+                    {{ skill.name }}
+                  </RoughNotation>
+                </p>
+              </div>
+              <button
+                class="inline-block px-3 py-2 font-medium leading-none text-gray-500 bg-indigo-100 rounded-lg hover:text-indigo-600 focus:text-indigo-600 focus:outline-none bg-indigo-50"
+                @click="isSeeMoreSoftSkill = !isSeeMoreSoftSkill"
+              >
+                {{ isSeeMoreSoftSkill === false ? 'See more' : 'See less' }}
+              </button>
+            </div>
+
+            <p class="mb-2 font-semibold">Hard skills:</p>
+            <div v-if="hardSkills.length <= 15" class="flex flex-wrap">
+              <p
+                v-for="(skill, index) in hardSkills"
+                :key="index"
+                class="px-3 mb-2 mr-2 text-gray-800"
+              >
+                <RoughNotation
+                  :is-show="true"
+                  type="highlight"
+                  :color="getRandomColor()"
+                >
+                  {{ skill.name }}
+                </RoughNotation>
+              </p>
+            </div>
+            <div v-else>
+              <div class="flex flex-wrap mb-4">
+                <p
+                  v-for="(skill, index) in shortenedHardSkills"
+                  :key="index"
+                  class="px-3 mb-2 mr-2 text-gray-800"
+                >
+                  <RoughNotation
+                    :is-show="true"
+                    type="highlight"
+                    :color="getRandomColor()"
+                  >
+                    {{ skill.name }}
+                  </RoughNotation>
+                </p>
+              </div>
+              <button
+                class="inline-block px-3 py-2 font-medium leading-none text-gray-500 bg-indigo-100 rounded-lg hover:text-indigo-600 focus:text-indigo-600 focus:outline-none bg-indigo-50"
+                @click="isSeeMoreHardSkill = !isSeeMoreHardSkill"
+              >
+                {{ isSeeMoreHardSkill === false ? 'See more' : 'See less' }}
+              </button>
+            </div>
+          </div>
+        </RoughNotation>
+      </div>
+    </section>
+
     <section class="pt-4 pb-10 border-0 border-t-2 border-b-2">
-      <button
+      <!-- <button
         type="button"
         :class="{
           'bg-indigo-100 text-indigo-700': year === '2018',
@@ -149,14 +299,15 @@
         @click="year = '2017'"
       >
         2017
-      </button>
+      </button> -->
       <h2
         class="pt-4 text-2xl font-semibold text-left text-gray-900 md:text-center"
       >
         Location:
       </h2>
       <h3 class="pb-3 text-left text-gray-600 md:text-center">
-        Number of job openings in each state, ordered from highest to lowest.
+        Number of job openings in each state in 2020, ordered from highest to
+        lowest.
       </h3>
       <bar-chart :chart-data="chartData" :options="chartOptions"></bar-chart>
     </section>
@@ -210,10 +361,11 @@ import { laborData } from '@/data/data.js'
 export default {
   data() {
     return {
-      elementId: '',
       url: this.$route.params.id.split(' x '),
       is2018: true,
       year: '2018',
+      isSeeMoreHardSkill: false,
+      isSeeMoreSoftSkill: false,
       chartOptions: {
         maintainAspectRatio: false,
         responsive: true,
@@ -271,11 +423,44 @@ export default {
       const numOfFemales = this.selectedEducation[this.year].femaleCount
       return this.getRatio(numOfMales, numOfFemales)
     },
+    salaryByLevel() {
+      return this.selectedEducation[this.year].salaryByLevel
+    },
     minWage() {
       return this.selectedEducation[this.year].aveMinSalary
     },
     maxWage() {
       return this.selectedEducation[this.year].aveMaxSalary
+    },
+    jobTitles() {
+      return this.selectedIndustry.titles
+    },
+    skills() {
+      return this.selectedIndustry.skills
+    },
+    hardSkills() {
+      return this.selectedIndustry.skills.filter(
+        (skill) => skill.type === 'Hard Skill'
+      )
+    },
+    softSkills() {
+      return this.selectedIndustry.skills.filter(
+        (skill) => skill.type === 'Soft Skill'
+      )
+    },
+    shortenedHardSkills() {
+      if (this.isSeeMoreHardSkill === false) {
+        return this.hardSkills.slice(0, 15)
+      } else {
+        return this.hardSkills
+      }
+    },
+    shortenedSoftSkills() {
+      if (this.isSeeMoreSoftSkill === false) {
+        return this.softSkills.slice(0, 15)
+      } else {
+        return this.softSkills
+      }
     },
     selectedLocation() {
       const location = this.selectedEducation[this.year].states // this.selectedIndustry.states[this.year]
@@ -355,6 +540,31 @@ export default {
         return jobCount
       }
     },
+    getRandomColor() {
+      // const colors = [
+      //   '#e6fffa',
+      //   '#f0fff4',
+      //   '#fffff0',
+      //   '#fff5f5',
+      //   '#fffaf0',
+      //   '#ebf8ff',
+      //   '#ebf4ff',
+      //   '#faf5ff',
+      //   '#fff5f7',
+      // ]
+      const colors = [
+        '#fed7d7',
+        '#feebc8',
+        '#fefcbf',
+        '#c6f6d5',
+        '#b2f5ea',
+        '#bee3f8',
+        '#c3dafe',
+        '#e9d8fd',
+        '#fed7e2',
+      ]
+      return colors[Math.floor(Math.random() * colors.length)]
+    },
   },
   // validate route name by matching it to valid industry and education level names
   validate({ params }) {
@@ -363,10 +573,10 @@ export default {
     const eduLevel = url[1].split(' or ').join('/')
     const education = [
       'No Tertiary Education',
-      'Certificate',
+      'Professional Certificate',
       'Pre-University',
-      'Diploma/Advanced Diploma',
-      'Bachelor/Postgraduate Diploma/Professional',
+      'Diploma/Advanced/Higher/Graduate Diploma',
+      'Bachelor/Postgraduate Diploma/Professional Degree',
       'Master',
       'PhD/Doctorate',
     ]

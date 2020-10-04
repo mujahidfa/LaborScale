@@ -1,4 +1,4 @@
-export const laborData = [
+[
   {
     "id": 0,
     "name": "Accounting and taxation",
