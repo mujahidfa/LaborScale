@@ -157,8 +157,8 @@
           Job titles:
         </h2>
         <RoughNotation :is-show="true" type="box" :iterations="3" color="green">
-          <div v-if="jobTitles === 0" class="p-4">
-            <p class="text-3xl">No job titles found</p>
+          <div v-if="jobTitles.length === 0" class="p-4">
+            <p class="text-2xl text-gray-600">No job titles found</p>
           </div>
           <div v-else class="flex flex-wrap p-4">
             <p
@@ -188,7 +188,7 @@
           color="orange"
         >
           <div v-if="skills.length === 0" class="p-4">
-            <p class="text-3xl">No skills found</p>
+            <p class="text-2xl text-gray-600">No skills found</p>
           </div>
           <div v-else class="p-4">
             <p class="mb-2 font-semibold">Soft skills:</p>
