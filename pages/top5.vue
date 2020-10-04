@@ -2,20 +2,20 @@
   <main
     class="flex flex-col max-w-screen-lg min-h-screen px-8 text-center lg:mx-auto"
   >
-    <Disclaimer
+    <!-- <Disclaimer
       v-show="isModalVisible === true"
       @close="isModalVisible = false"
-    />
+    /> -->
     <h1 class="pt-10 pb-3 text-3xl font-extrabold lg:text-5xl">
       The Top 5's
     </h1>
     <p class="text-gray-800 md:text-xl">
       <RoughNotation :is-show="true" type="highlight" color="#fff176">
-        We list the Top 5's interesting findings from the 2018 labor market in
-        Malaysia.
+        We list the Top 5's interesting findings from the current 2020 job
+        market in Malaysia.
       </RoughNotation>
     </p>
-    <p class="text-red-800">
+    <!-- <p class="text-red-800">
       *Please read the disclaimer before proceeding!
       <button
         class="underline hover:text-blue-700"
@@ -23,7 +23,7 @@
       >
         Click here
       </button>
-    </p>
+    </p> -->
     <!-- <p class="text-xs text-gray-600">
       *based on 2017-2018 data obtained from the
       <a
@@ -45,7 +45,7 @@
         </template>
         <template v-slot:heading>
           Higher on the list means there's more job openings relative to the
-          number of students graduating in that industry
+          number of students enrolled in university in 2018
         </template>
       </top-5-card>
 
@@ -63,7 +63,7 @@
       <top-5-card :industry="laborDemand">
         <template v-slot:title>
           <RoughNotation :is-show="true" type="highlight" color="#fed7d7">
-            Top 5 industry with the most jobs openings
+            Top 5 industry with the most job openings
           </RoughNotation>
         </template>
         <template v-slot:heading>
@@ -93,54 +93,54 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      isModalVisible: true,
+      // isModalVisible: true,
       jobToStudent: [
-        'Protection of persons and property',
-        'Marketing and advertising',
-        'Languages',
-        'Transport services',
-        'Journalism and reporting',
+        'Social and behavioural science',
+        'Environmental science',
+        'Dental studies',
+        'Material engineering',
+        'Health',
       ],
       laborDemand: [
-        'Management and administration',
-        'Marketing and advertising',
-        'Accounting and taxation',
+        'Business and administration',
+        'Social and behavioural science',
         'Computer science',
-        'Finance, banking and insurance',
+        'Building',
+        'Finance, banking, insurance',
       ],
       laborSupply: [
-        'Management and administration',
         'Computer science',
+        'Accounting and taxation',
+        'Finance, banking, insurance',
+        'Business and administration',
         'Mechanics and metal work',
-        'Civil engineering',
-        'Electronics and automation',
       ],
       salary: {
-        Statistics: 6633,
-        Physics: 6509,
-        Economics: 6315,
-        'Computer science': 6144,
-        Law: 6029,
+        'Dental studies': 6686,
+        Law: 3900,
+        'Food processing': 3733,
+        Building: 3631,
+        'Social work and counseling': 3616,
       },
     }
   },
-  watch: {
-    isModalVisible(newName) {
-      localStorage.isModalVisible = newName
-    },
-  },
-  mounted() {
-    if (localStorage.isModalVisible) {
-      // localStorage.isModalVisible = true
-      this.isModalVisible = localStorage.isModalVisible
-      // eslint-disable-next-line no-console
-      console.log(
-        'in mounted localstorage homepage: ' + localStorage.isModalVisible
-      )
-      // eslint-disable-next-line no-console
-      console.log('value of isModalVisible: ' + this.isModalVisible)
-    }
-  },
+  // watch: {
+  //   isModalVisible(newName) {
+  //     localStorage.isModalVisible = newName
+  //   },
+  // },
+  // mounted() {
+  //   if (localStorage.isModalVisible) {
+  //     // localStorage.isModalVisible = true
+  //     this.isModalVisible = localStorage.isModalVisible
+  //     // eslint-disable-next-line no-console
+  //     console.log(
+  //       'in mounted localstorage homepage: ' + localStorage.isModalVisible
+  //     )
+  //     // eslint-disable-next-line no-console
+  //     console.log('value of isModalVisible: ' + this.isModalVisible)
+  //   }
+  // },
 })
 </script>
 

@@ -1,30 +1,30 @@
 {
   "jobToStudent": [
-    "Protection of persons and property",
-    "Marketing and advertising",
-    "Languages",
-    "Transport services",
-    "Journalism and reporting"
+    "Social and behavioural science",
+    "Environmental science",
+    "Dental studies",
+    "Material engineering",
+    "Health"
   ],
   "laborDemand": [
-    "Management and administration",
-    "Marketing and advertising",
-    "Accounting and taxation",
+    "Business and administration",
+    "Social and behavioural science",
     "Computer science",
-    "Finance, banking and insurance"
+    "Building",
+    "Finance, banking, insurance"
   ],
   "laborSupply": [
-    "Management and administration",
     "Computer science",
-    "Mechanics and metal work",
-    "Civil engineering",
-    "Electronics and automation"
+    "Accounting and taxation",
+    "Finance, banking, insurance",
+    "Business and administration",
+    "Mechanics and metal work"
   ],
   "salary": {
-    "Statistics": 6633,
-    "Physics": 6509,
-    "Economics": 6315,
-    "Computer science": 6144,
-    "Law": 6029
+    "Dental studies": 6686,
+    "Law": 3900,
+    "Food processing": 3733,
+    "Building": 3631,
+    "Social work and counseling": 3616
   }
 }
