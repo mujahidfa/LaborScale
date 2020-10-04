@@ -104,7 +104,7 @@
         </RoughNotation>
 
         <label for="job" class="pl-2 text-2xl text-center">
-          I want to work in...
+          You are compatible to work in...
         </label>
       </div>
       <v-select
