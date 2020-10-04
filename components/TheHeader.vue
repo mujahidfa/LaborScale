@@ -73,6 +73,12 @@
             Top 5
           </nuxt-link>
           <nuxt-link
+            to="/jobs"
+            class="px-4 py-1 text-base font-medium leading-6 text-white transition duration-150 ease-in-out rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+          >
+            Jobs
+          </nuxt-link>
+          <nuxt-link
             to="/about"
             class="px-4 py-1 text-base font-medium leading-6 text-white transition duration-150 ease-in-out rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
           >
