@@ -52,7 +52,7 @@
       </button>
     </div>
 
-    <div v-if="isPersonalityTypeIncluded === false">
+    <div v-show="isPersonalityTypeIncluded === false">
       <section class="pb-20 md:px-32">
         <div class="flex flex-row items-center justify-center pb-4">
           <RoughNotation :is-show="true" type="highlight" color="#FFFEE2">
@@ -102,7 +102,7 @@
       </section>
     </div>
 
-    <div v-else>
+    <div v-show="isPersonalityTypeIncluded === true">
       <!-- Education level -->
       <section class="pb-20 md:px-32">
         <div class="flex flex-row items-center justify-center pb-4">
