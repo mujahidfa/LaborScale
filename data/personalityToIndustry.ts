@@ -168,7 +168,6 @@ export const personalityToIndustry: PersonalityToIndustry = {
     'Marketing and advertising',
     'Nursing and caring',
     'Psychology',
-    'Psychology',
     'Social work and counseling',
   ],
 }
