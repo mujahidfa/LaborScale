@@ -60,7 +60,7 @@
           </RoughNotation>
 
           <label for="course" class="pl-2 text-2xl text-center">
-            I'm studying...
+            I want to study...
           </label>
         </div>
 
@@ -111,7 +111,7 @@
           </RoughNotation>
 
           <label for="course" class="pl-2 text-2xl text-center">
-            I'm studying...
+            I want to study...
           </label>
         </div>
 
@@ -172,7 +172,7 @@
           </RoughNotation>
 
           <label for="job" class="pl-2 text-2xl text-center">
-            You are compatible to work in...
+            I'm compatible to work in...
           </label>
         </div>
         <v-select
