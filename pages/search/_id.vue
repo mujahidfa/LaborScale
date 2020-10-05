@@ -312,33 +312,43 @@
       <bar-chart :chart-data="chartData" :options="chartOptions"></bar-chart>
     </section>
 
-    <section class="flex flex-col items-start pb-10 border-0 border-b-2">
-      <h2 class="pt-8 pb-3 text-2xl font-semibold text-gray-900">
+    <section class="flex flex-col pb-10 border-0 border-b-2">
+      <h2
+        class="flex items-start pt-8 pb-4 text-2xl font-semibold text-gray-900"
+      >
         Important links:
       </h2>
-      <div class="">
-        <ul class="pl-4 text-left list-disc list-inside">
-          <li class="">
-            <a
-              :href="jobstreetLink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-indigo-700 underline hover:text-green-700"
-            >
-              Available jobs on JobStreet
-            </a>
-          </li>
-          <li>
-            <a
-              :href="linkedinLink"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-indigo-700 underline hover:text-green-700"
-            >
-              Industry connections on LinkedIn
-            </a>
-          </li>
-        </ul>
+
+      <div
+        class="flex flex-col items-center space-y-4 md:flex-row md:space-y-0"
+      >
+        <a
+          :href="jobstreetLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col self-center text-indigo-700 underline hover:text-green-700 md:w-1/2"
+        >
+          Available {{ industry }} jobs on JobStreet:
+          <img
+            src="@/assets/logos/jobstreet.png"
+            alt="JobStreet logo"
+            class=""
+          />
+        </a>
+        <a
+          :href="linkedinLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex flex-col items-center self-center text-indigo-700 underline hover:text-green-700 md:w-1/2"
+        >
+          People in {{ industry }} you can connect with on LinkedIn:
+          <img
+            src="@/assets/logos/linkedin.png"
+            alt="LinkedIn logo"
+            class="mt-6"
+            width="300"
+          />
+        </a>
       </div>
     </section>
 
